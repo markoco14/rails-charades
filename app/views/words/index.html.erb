@@ -3,9 +3,7 @@
 <ul>
     <% @words.each do |word| %>
         <li>
-            <a href="/words/<%= word.id %>">
-                <%= word.word %>
-            </a>
+            <%= link_to word.word, word%>
         </li>
     <% end %>
 </ul>
