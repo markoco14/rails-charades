@@ -14,7 +14,15 @@
 
 <ul>
     <% @word.descriptions.each do |description| %>
-        <li><%= description.description %></li>
+        <li>
+            <%= description.description %>
+            <span>
+                <%= link_to "Delete", [description.word, description], data: {
+                            turbo_method: :delete,
+                            turbo_confirm: "Are you sure?"
+                            } %>
+            </span>
+        </li>
     <% end %>
 </ul>
 
