@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "pages#index"
+  get "play", to: "pages#play"
+
   resources :words do
     resources :descriptions
   end

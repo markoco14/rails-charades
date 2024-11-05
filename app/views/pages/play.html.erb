@@ -1,0 +1,14 @@
+<a href="/">Back</a>
+
+<br>
+
+<%= @word.word %>
+
+
+<ul>
+    <% @word.descriptions.each do |description| %>
+        <li>
+            <%= description.description %>
+        </li>
+    <% end %>
+</ul>
