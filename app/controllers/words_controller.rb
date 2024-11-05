@@ -20,6 +20,20 @@ class WordsController < ApplicationController
     end
   end
 
+  def edit
+    @word = Word.find(params[:id])
+  end
+  
+  def update
+    @word = Word.find(params[:id])
+
+    if @word.update(word_params)
+      redirect_to @word
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
     def word_params
       params.require(:word).permit(:word)

@@ -1,0 +1,9 @@
+<%= form_with model: @word do |form| %>
+    <div>
+        <%= form.label :word %>
+        <%= form.text_field :word %>
+    </div>
+    <div>
+        <%= form.submit %>
+    </div>
+<% end%>
