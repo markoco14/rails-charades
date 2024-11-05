@@ -34,6 +34,13 @@ class WordsController < ApplicationController
     end
   end
 
+  def destroy
+    @word = Word.find(params[:id])
+    @word.destroy
+
+    redirect_to words_path, status: :see_other
+  end
+
   private
     def word_params
       params.require(:word).permit(:word)
