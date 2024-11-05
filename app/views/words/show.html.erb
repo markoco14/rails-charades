@@ -2,8 +2,6 @@
 
 <p>Welcome to the <%= @word.word %> page.</p>
 
-<p>Later you will be able to add ways to describe the word.</p>
-
 <ul>
     <li><%= link_to "Edit", edit_word_path(@word) %></li>
     <li><%= link_to "Delete", word_path(@word), data: {
@@ -11,5 +9,25 @@
         turbo_confirm: "Are you sure?"
     } %></li>
 </ul>
+
+<h2>Descritions</h2>
+
+<ul>
+    <% @word.descriptions.each do |description| %>
+        <li><%= description.description %></li>
+    <% end %>
+</ul>
+
+<h2>Add descriptions</h2>
+
+<%= form_with model: [ @word, @word.descriptions.build ] do |form| %>
+    <p>
+        <%= form.label :description %><br>
+        <%= form.text_field :description %>
+    </p>
+    <p>
+        <%= form.submit %>
+    </p>
+<% end %>
 
 <a href="/words">Back</a>
