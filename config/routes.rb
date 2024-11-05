@@ -12,5 +12,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "pages#index"
-  resources :words
+  resources :words do
+    resources :descriptions
+  end
 end
