@@ -1,2 +1,9 @@
 <h1>Words</h1>
 <p>Here are the words available in the app.</p>
+<ul>
+    <% @words.each do |word| %>
+        <li>
+            <%= word.word %>
+        </li>
+    <% end %>
+</ul>
