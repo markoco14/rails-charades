@@ -23,7 +23,7 @@ class WordsController < ApplicationController
   def edit
     @word = Word.find(params[:id])
   end
-  
+
   def update
     @word = Word.find(params[:id])
 
