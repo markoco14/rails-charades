@@ -1,14 +1,21 @@
-<a href="/">Back</a>
+<nav>
+    <a href="/" >Back</a>
+    <% if @word %>
+        <a href="/play">Get New Word</a><br>
+    <% end%>
+</nav>
 
-<br>
+<% if @word %>
+    <%= @word.word %>
+    <ul>
+        <% @word.descriptions.each do |description| %>
+            <li>
+                <%= description.description %>
+            </li>
+        <% end %>
+    </ul>
+<% else %>
+    <p>There are no words saved!</p>
+    <a href="/new">Add New Word</a>
+<% end%>
 
-<%= @word.word %>
-
-
-<ul>
-    <% @word.descriptions.each do |description| %>
-        <li>
-            <%= description.description %>
-        </li>
-    <% end %>
-</ul>
