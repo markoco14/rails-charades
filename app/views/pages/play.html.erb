@@ -1,12 +1,12 @@
-<nav>
+<nav class="fixed top-0 left-0 h-[48px] w-full flex justify-between px-4">
     <a href="/" >Back</a>
     <% if @word %>
-        <a href="/play">Get New Word</a><br>
+        <a href="/play">Get New Word</a>
     <% end%>
 </nav>
 
 <% if @word %>
-    <%= @word.word %>
+    <p class="text-center text-5xl"><%= @word.word %></p>
     <ul>
         <% @word.descriptions.each do |description| %>
             <li>
