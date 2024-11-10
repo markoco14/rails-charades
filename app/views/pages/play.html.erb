@@ -11,11 +11,9 @@
         <% end %>
     </ul>
     <p class="text-center mb-8 text-gray-700">Scroll left and right to change descriptions</p>
-    <% if @word %>
     <p class="text-center">
-        <a href="/play" class="bg-blue-500 text-white px-8 py-4 rounded-md inline-block">Get New Word</a>
+        <button onclick="window.location.reload()" class="bg-blue-500 text-white px-8 py-4 rounded-md inline-block">Get New Word</button>
     </p>
-    <% end%>
 <% else %>
     <p>There are no words saved!</p>
     <a href="/new">Add New Word</a>
