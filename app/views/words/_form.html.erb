@@ -3,7 +3,7 @@
         <%= form.label :word %><br>
         <%= form.text_field :word %>
         <% word.errors.full_messages_for(:word).each do |message| %>
-            <div><%= message %></div>
+            <div class="text-red-500"><%= message %></div>
         <% end %>
     </div>
     <div>
