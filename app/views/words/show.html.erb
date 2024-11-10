@@ -29,15 +29,16 @@
             </p>
         <% end %>
     </div>
-    <div class="pr-16">
+    <div class="sm:pr-16">
         <h2 class="text-4xl mb-4">Descriptions</h2>
         <% if @word.descriptions.any? %>
             <ul>
                 <% @word.descriptions.each do |description| %>
-                <li>
+                <li class="flex justify-between items-start">
                     <span><%= description.description %></span>
                     <span>
                         <%= link_to "Delete", [description.word, description],
+                        class: "inline-block border px-2 py-1 rounded-md hover:bg-red-500 active:bg-red-600 hover:text-white active:text-white active:scale-95",
                         data: {
                             turbo_method: :delete,
                             turbo_confirm: "Are you sure?"
