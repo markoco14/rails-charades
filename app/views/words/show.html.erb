@@ -3,8 +3,7 @@
 </nav>
 <div class="p-2 py-[48px] sm:p-0 sm:py-[48px] grid gap-8 sm:gap-0 sm:grid-cols-3">
     <div class="sm:pl-16">
-        <h1 class="text-4xl mb-4"><%= @word.word %></h1>
-
+        <h1 class="text-4xl mb-4"><%= @word.word.capitalize() %></h1>
         <ul class="flex gap-2">
             <li><%= link_to "Edit", 
                     edit_word_path(@word), 
@@ -20,7 +19,7 @@
     </div>
     <div class="sm:px-8">
         <h2 class="text-4xl mb-4">New description</h2>
-        <%= form_with model: [ @word, @word.descriptions.build ] do |form| %>
+        <%= form_with model: [ @word, Description.new(word: @word) ] do |form| %>
             <p>
                 <%= form.label :description %><br>
                 <%= form.text_field :description %>
@@ -29,28 +28,27 @@
                 <%= form.submit %>
             </p>
         <% end %>
-        
     </div>
     <div class="pr-16">
         <h2 class="text-4xl mb-4">Descriptions</h2>
-        <ul>
-            <% if @word.descriptions.length() > 0 %>
+        <% if @word.descriptions.any? %>
+            <ul>
                 <% @word.descriptions.each do |description| %>
-                    <li>
-                        <span><%= description.description %></span>
-                        <span>
-                            <%= link_to "Delete", [description.word, description], data: {
-                                turbo_method: :delete,
-                                        turbo_confirm: "Are you sure?"
-                                        } %>
-                        </span>
-                    </li>
-                    <hr class="my-4"/>
+                <li>
+                    <span><%= description.description %></span>
+                    <span>
+                        <%= link_to "Delete", [description.word, description],
+                        data: {
+                            turbo_method: :delete,
+                            turbo_confirm: "Are you sure?"
+                        } %>
+                    </span>
+                </li>
+                <hr class="my-4"/>
                 <% end %>
-            <% else %>
+            </ul>
+        <% else %>
             <p>There are no descriptions saved!</p>
-            <% end %>
-        </ul>
+        <% end %>
     </div>
-
 </div>
