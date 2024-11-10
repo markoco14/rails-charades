@@ -1,6 +1,10 @@
 <%= form_with model: @word do |form| %>
     <div>
-        <%= form.label :word %><br>
+        <% if @word.new_record? %>
+            <%= form.label :word, "What word do you want to add?"%><br>
+        <% else %>
+            <%= form.label :word, "Update the word if you made any mistakes."%><br>
+        <% end %>
         <%= form.text_field :word %>
         <% word.errors.full_messages_for(:word).each do |message| %>
             <div class="text-red-500"><%= message %></div>
