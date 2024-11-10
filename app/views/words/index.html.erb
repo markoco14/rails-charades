@@ -1,13 +1,24 @@
-<h1>Words</h1>
-<p>Here are the words available in the app.</p>
-<ul>
-    <% @words.each do |word| %>
-        <li>
-            <%= link_to word.word, word%>
-        </li>
+<div class="p-2 py-[48px] sm:p-0 sm:py-[48px] max-w-[600px] mx-auto">
+    <a href="/" class="border rounded-md px-2 py-1 hover:bg-gray-200 active:bg-gray-300 active:scale-95">Back</a>
+    <h1 class="text-4xl mb-4 mt-8">ESL Charades Words</h1>
+    <p class="mb-4">The words you want aren't in the list? You are welcome to add more words any time.</p>
+    <%= link_to "New Word", new_word_path,
+        class: "bg-blue-500 px-8 py-2 rounded-md text-white hover:bg-blue-600 active:bg-blue-700 active:scale-95 inline-block" %>
+    <hr class="my-8"/>
+    <h2 class="text-4xl mb-4">Words</h2>
+    <p class="mb-4">Look through all the words available in the app. You are welcome to add more words if the ones you want are missing.</p>
+    <% if @words.any? %>
+    <ul>
+        <% @words.each do |word| %>
+            <li>
+                <%= link_to word.word, word%>
+            </li>
+            <hr class="my-2"/>
+        <% end %>
+    </ul>
+    <% else %>
+    <p>There are no words.</p>
     <% end %>
-</ul>
 
-<%= link_to "New Word", new_word_path %>
 
-<a href="/">Back</a>
+</div>

@@ -1,18 +1,29 @@
 <nav class="fixed top-0 left-0 h-[48px] w-full flex justify-between items-center px-2 sm:px-16">
-    <a href="/" >Back</a>
+    <%= link_to "Back", "/",
+        class: "inline-block border rounded-md px-2 py-1 hover:bg-gray-200 active:bg-gray-300 active:scale-95"
+        %>
 </nav>
 <% if @word %>
     <p class="text-center text-5xl mt-[48px] py-16"><%= @word.word %></p>
-    <ul class="flex items-stretch overflow-x-scroll mb-4 no-scrollbar border-y border-black">
-        <% @word.descriptions.each do |description| %>
-            <li class="w-full flex-shrink-0 text-5xl px-2 py-2 sm:px-16 sm:py-16 sm:text-center">
-                <%= description.description %>
-            </li>
-        <% end %>
-    </ul>
-    <p class="text-center mb-8 text-gray-700">Scroll left and right to change descriptions</p>
+    <% if @word.descriptions.any? %>
+        <ul class="flex items-stretch overflow-x-scroll mb-4 no-scrollbar border-y border-black">
+            <% @word.descriptions.each do |description| %>
+                <li class="w-full flex-shrink-0 text-5xl px-2 py-2 sm:px-16 sm:py-16 sm:text-center">
+                    <%= description.description %>
+                </li>
+            <% end %>
+        </ul>
+        <p class="text-center mb-8 text-gray-700">Scroll left and right to change descriptions</p>
+    <% else %>
+        <p class="text-center mb-8">There are no descriptions for this word. <%= link_to "Add descriptions", word_path(@word), 
+        class: "underline underline-offset-2 text-blue-500 hover:text-blue-400 active:text-blue-700" %></p>
+    <% end %>
     <p class="text-center">
-        <button onclick="window.location.reload()" class="bg-blue-500 text-white px-8 py-4 rounded-md inline-block">Get New Word</button>
+        <button 
+        onclick="window.location.reload()" 
+        class="bg-blue-500 text-white px-8 py-2 rounded-md inline-block hover:bg-blue-600 active:bg-blue-700 active:scale-95">
+            Get New Word
+        </button>
     </p>
 <% else %>
     <p>There are no words saved!</p>
