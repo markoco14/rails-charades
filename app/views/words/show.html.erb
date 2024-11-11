@@ -1,8 +1,8 @@
 <nav class="fixed top-0 left-0 h-[48px] w-full flex justify-between items-center px-2 sm:px-16">
     <a href="/words" class="inline-block border rounded-md px-2 py-1 hover:bg-gray-200 active:bg-gray-300 active:scale-95">Back</a>
 </nav>
-<div class="p-2 py-[48px] sm:p-0 sm:py-[48px] grid gap-8 sm:gap-0 sm:grid-cols-3">
-    <div class="sm:pl-16">
+<div class="p-2 py-[48px] sm:px-16 sm:py-[48px] grid gap-8 sm:gap-16 sm:grid-cols-3">
+    <div>
         <h1 class="text-4xl mb-4"><%= @word.word %></h1>
         <%= render "form", word: @word, method: :patch %>
         <%= link_to "Delete", word_path(@word),
@@ -12,24 +12,24 @@
                 turbo_confirm: "Are you sure?"
             } %>
     </div>
-    <div class="sm:px-8">
+    <div>
         <h2 class="text-4xl mb-4">New description</h2>
         <%= form_with model: [ @word, Description.new(word: @word) ] do |form| %>
             <p>
-                <%= form.label :description %><br>
-                <%= form.text_field :description, class: "mt-1 rounded-md" %>
+                <%= form.label :description, "How do you want to describe the word?" %><br>
+                <%= form.text_field :description, class: "mt-1 rounded-md w-full" %>
             </p>
             <p class="mt-2 *:bg-blue-500 *:px-8 *:py-2 *:rounded-md *:text-white *:hover:bg-blue-400 *:active:bg-blue-600 *:active:scale-95 *:cursor-pointer">
                 <%= form.submit %>
             </p>
         <% end %>
     </div>
-    <div class="sm:pr-16">
+    <div>
         <h2 class="text-4xl mb-4">Descriptions</h2>
         <% if @word.descriptions.any? %>
             <ul>
                 <% @word.descriptions.each do |description| %>
-                <li class="flex justify-between items-start">
+                <li class="flex justify-between items-start gap-8">
                     <span><%= description.description %></span>
                     <span>
                         <%= link_to "Delete", [description.word, description],
