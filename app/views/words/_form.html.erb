@@ -3,14 +3,14 @@
         <% if @word.new_record? %>
             <%= form.label :word, "What word do you want to add?"%><br>
         <% else %>
-            <%= form.label :word, "Update the word if you made any mistakes."%><br>
+            <%= form.label :word, "Update the word."%><br>
         <% end %>
-        <%= form.text_field :word %>
+        <%= form.text_field :word, class: "mt-1 rounded-md" %>
         <% word.errors.full_messages_for(:word).each do |message| %>
             <div class="text-red-500"><%= message %></div>
         <% end %>
     </div>
-    <div>
+    <div class="mt-2 *:bg-blue-500 *:px-8 *:py-2 *:rounded-md *:text-white *:hover:bg-blue-400 *:active:bg-blue-600 *:active:scale-95 *:cursor-pointer">
         <%= form.submit %>
     </div>
 <% end%>

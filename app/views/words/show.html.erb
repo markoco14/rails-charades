@@ -3,28 +3,23 @@
 </nav>
 <div class="p-2 py-[48px] sm:p-0 sm:py-[48px] grid gap-8 sm:gap-0 sm:grid-cols-3">
     <div class="sm:pl-16">
-        <h1 class="text-4xl mb-4"><%= @word.word.capitalize() %></h1>
-        <ul class="flex gap-2">
-            <li><%= link_to "Edit", 
-                    edit_word_path(@word), 
-                    class: "inline-block bg-blue-500 px-8 py-2 rounded-md text-white hover:bg-blue-600 active:bg-blue-700 active:scale-95" %>
-            </li>
-            <li><%= link_to "Delete", word_path(@word),
-                    class: "inline-block border px-8 py-2 rounded-md hover:bg-red-500 active:bg-red-600 hover:text-white active:text-white active:scale-95",
+        <h1 class="text-4xl mb-4"><%= @word.word %></h1>
+        <%= render "form", word: @word, method: :patch %>
+        <%= link_to "Delete", word_path(@word),
+                    class: "mt-8 inline-block border px-8 py-2 rounded-md hover:bg-red-500 active:bg-red-600 hover:text-white active:text-white active:scale-95",
                     data: {
                 turbo_method: :delete,
                 turbo_confirm: "Are you sure?"
-            } %></li>
-        </ul>
+            } %>
     </div>
     <div class="sm:px-8">
         <h2 class="text-4xl mb-4">New description</h2>
         <%= form_with model: [ @word, Description.new(word: @word) ] do |form| %>
             <p>
                 <%= form.label :description %><br>
-                <%= form.text_field :description %>
+                <%= form.text_field :description, class: "mt-1 rounded-md" %>
             </p>
-            <p>
+            <p class="mt-2 *:bg-blue-500 *:px-8 *:py-2 *:rounded-md *:text-white *:hover:bg-blue-400 *:active:bg-blue-600 *:active:scale-95 *:cursor-pointer">
                 <%= form.submit %>
             </p>
         <% end %>
