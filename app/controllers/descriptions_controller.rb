@@ -19,7 +19,7 @@ class DescriptionsController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
-  
+
   def destroy
     @word = Word.find(params[:word_id])
     @description = @word.descriptions.find(params[:id])
