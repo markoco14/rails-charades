@@ -16,7 +16,7 @@ class DescriptionsController < ApplicationController
     if @description.update(description_params)
       redirect_to word_path(@word)
     else
-      render :edit, status: :unprocessable_entity
+      redirect_to word_path(@word), status: :unprocessable_entity
     end
   end
 
