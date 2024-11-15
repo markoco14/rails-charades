@@ -26,14 +26,29 @@
     </div>
     <div>
         <h2 class="text-4xl mb-4">Descriptions</h2>
+        <p>Update the descriptions if they don't fit right.</p>
         <% if @word.descriptions.any? %>
             <ul>
                 <% @word.descriptions.each do |description| %>
-                <li class="flex justify-between items-start gap-8">
-                    <span><%= description.description %></span>
+                <li>
+                    <%= form_with model: [@word, description] do |form| %>
+                        <div>
+                            <% if description.new_record? %>
+                                <%= form.label :description, "How do you want to describe the word?"%><br>
+                            <% end %>
+                            <%= form.text_area :description, class: "mt-1 rounded-md w-full" %>
+                            <% description.errors.full_messages_for(:description).each do |message| %>
+                                <div class="text-red-500"><%= message %></div>
+                            <% end %>
+                        </div>
+                        <div class="mt-2 *:bg-blue-500 *:px-8 *:py-2 *:rounded-md *:text-white *:hover:bg-blue-400 *:active:bg-blue-600 *:active:scale-95 *:cursor-pointer">
+                            <%= form.submit %>
+                        </div>
+                    <% end%>
+                    
                     <span>
                         <%= link_to "Delete", [description.word, description],
-                        class: "inline-block border px-2 py-1 rounded-md hover:bg-red-500 active:bg-red-600 hover:text-white active:text-white active:scale-95",
+                        class: "mt-2 bg-gray-100 inline-block border px-2 py-1 rounded-md hover:bg-red-500 active:bg-red-600 hover:text-white active:text-white active:scale-95",
                         data: {
                             turbo_method: :delete,
                             turbo_confirm: "Are you sure?"
