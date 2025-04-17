@@ -1,21 +1,26 @@
-<%= render "back" %>
+<%= render "finish" %>
 <% if @word %>
-    <div class="flex flex-col justify-between">
-        <p class="text-center text-5xl mt-[48px] py-16"><%= @word.word %></p>
+    <div class="h-screen grid">
+        <div class="grid place-content-center">
+            <p class="text-center text-5xl mt-[48px]"><%= @word.word %></p>
+        </div>
+        <div class="grid grid-rows-4 text-xl">
         <% if @word.descriptions.any? %>
-            <ul class="flex items-stretch overflow-x-scroll mb-4 no-scrollbar border-y border-black">
+            <ul class="row-span-3 flex items-stretch overflow-x-scroll no-scrollbar border-y border-black">
                 <% @word.descriptions.each do |description| %>
                     <li class="w-full flex-shrink-0 text-5xl px-2 py-2 sm:px-16 sm:py-16 sm:text-center">
                         <%= description.description %>
                     </li>
                 <% end %>
             </ul>
-            <p class="text-center mb-8 text-gray-700">Scroll left and right to change descriptions</p>
+            <p class="text-center text-gray-700">Scroll left and right to change descriptions</p>
         <% else %>
-            <p class="text-center mb-8">There are no descriptions for this word. <%= link_to "Add descriptions", word_path(@word), 
-            class: "underline underline-offset-2 text-blue-500 hover:text-blue-400 active:text-blue-700" %></p>
+            <p class="text-center mb-2">There are no descriptions for this word.</p>
+            <%= link_to "Add descriptions", word_path(@word), 
+            class: "underline underline-offset-2 hover:text-blue-500 active:scale-95 duration-200 ease-in-out" %>
         <% end %>
-        <p class="text-center">
+        </div>
+        <p class="text-center grid place-content-center">
             <button 
             onclick="window.location.reload()" 
             class="bg-blue-500 text-white px-8 py-2 rounded-md inline-block hover:bg-blue-600 active:bg-blue-700 active:scale-95">
