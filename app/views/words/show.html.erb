@@ -16,16 +16,18 @@
                 <%= render "descriptions/form", word: @word,  method: :post %>
             </div>
             <div>
-                <h2 class="text-4xl mb-4">Descriptions</h2>
-                <p>Update the descriptions if they don't fit right.</p>
+                <h2 class="text-4xl mb-2">Descriptions</h2>
+                <p class="mb-4">Update the descriptions if they don't fit right.</p>
                 <% if @word.descriptions.any? %>
-                    <ul>
+                    <ul class="grid gap-4">
                         <% @word.descriptions.each do |description| %>
-                        <li>
-                            <%= render "descriptions/edit_form", word: @word, description: description%>
-                            <%= render "descriptions/delete", description: description  %>
-                        </li>
-                        <hr class="my-4"/>
+                            <li>
+                                <turbo-frame id="description_<%= description.id%>">
+                                    <%= render "descriptions/edit_form", word: @word, description: description%>
+                                </turbo-frame>
+                                <%= render "descriptions/delete", description: description  %>
+                            </li>
+                            <hr />
                         <% end %>
                     </ul>
                 <% else %>
