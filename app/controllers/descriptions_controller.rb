@@ -4,7 +4,7 @@ class DescriptionsController < ApplicationController
       @descriptions = @word.descriptions
   end
 
-  def new 
+  def new
     @word = Word.find(params[:word_id])
     @description = @word.descriptions.new
   end
