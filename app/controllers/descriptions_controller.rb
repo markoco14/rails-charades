@@ -1,5 +1,4 @@
 class DescriptionsController < ApplicationController
-
   def index
       @word = Word.find(params[:word_id])
       @descriptions = @word.descriptions
