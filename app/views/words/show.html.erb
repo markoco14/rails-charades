@@ -9,25 +9,30 @@
             <%= render "delete", word: @word %>
         </turbo-frame>
     </div>
-    <div>
-        <h2 class="text-4xl mb-4">New description</h2>
-        <%= render "descriptions/form", word: @word,  method: :post %>
-    </div>
-    <div>
-        <h2 class="text-4xl mb-4">Descriptions</h2>
-        <p>Update the descriptions if they don't fit right.</p>
-        <% if @word.descriptions.any? %>
-            <ul>
-                <% @word.descriptions.each do |description| %>
-                <li>
-                    <%= render "descriptions/edit_form", word: @word, description: description%>
-                    <%= render "descriptions/delete", description: description  %>
-                </li>
-                <hr class="my-4"/>
+    <turbo-frame id="descriptions" class="col-span-2">
+        <div class="grid sm:grid-cols-2 gap-8 sm:gap-16">
+            <div>
+                <h2 class="text-4xl mb-4">New description</h2>
+                <%= render "descriptions/form", word: @word,  method: :post %>
+            </div>
+            <div>
+                <h2 class="text-4xl mb-4">Descriptions</h2>
+                <p>Update the descriptions if they don't fit right.</p>
+                <% if @word.descriptions.any? %>
+                    <ul>
+                        <% @word.descriptions.each do |description| %>
+                        <li>
+                            <%= render "descriptions/edit_form", word: @word, description: description%>
+                            <%= render "descriptions/delete", description: description  %>
+                        </li>
+                        <hr class="my-4"/>
+                        <% end %>
+                    </ul>
+                <% else %>
+                    <p>There are no descriptions saved!</p>
                 <% end %>
-            </ul>
-        <% else %>
-            <p>There are no descriptions saved!</p>
-        <% end %>
+            </div>
+        </div>
+    </turbo-frame>
     </div>
 </div>
