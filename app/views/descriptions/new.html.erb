@@ -1,0 +1,15 @@
+<div class="max-w-[600px] mx-auto px-2 py-2 sm:px-0">
+    
+    <h1 class="text-4xl mb-8">Descriptions for <%= @word.word %></h1>
+
+     <%= form_with model: [ @word, Description.new(word: @word) ] do |form| %>
+        <p>
+            <%= form.label :description, "How do you want to describe the word?" %><br>
+            <%= form.text_field :description, class: "mt-1 rounded-md w-full" %>
+        </p>
+        <p class="mt-2 *:bg-blue-500 *:px-8 *:py-2 *:rounded-md *:text-white *:hover:bg-blue-400 *:active:bg-blue-600 *:active:scale-95 *:cursor-pointer">
+            <%= form.submit "Save" %>
+        </p>
+    <% end %>
+
+</div>

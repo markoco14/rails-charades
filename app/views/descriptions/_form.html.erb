@@ -1,0 +1,9 @@
+ <%= form_with model: [ @word, Description.new(word: @word) ] do |form| %>
+    <p>
+        <%= form.label :description, "How do you want to describe the word?" %><br>
+        <%= form.text_field :description, class: "mt-4 rounded-md w-full" %>
+    </p>
+    <p class="mt-2 *:bg-blue-500 *:px-8 *:py-2 *:rounded-md *:text-white *:hover:bg-blue-400 *:active:bg-blue-600 *:active:scale-95 *:cursor-pointer">
+        <%= form.submit "Save" %>
+    </p>
+<% end %>

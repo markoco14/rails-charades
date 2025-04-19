@@ -1,0 +1,11 @@
+<% if @descriptions.any? %>
+    <ul>
+        <% @descriptions.each do |description| %>
+            <li>
+                <%= description.description %>
+            </li>
+        <% end %>
+    </ul>
+<% else %>
+    <p>There are no descriptions.</p>
+<% end %>
