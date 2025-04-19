@@ -4,6 +4,11 @@ class DescriptionsController < ApplicationController
       @word = Word.find(params[:word_id])
       @descriptions = @word.descriptions
   end
+
+  def new 
+    @word = Word.find(params[:word_id])
+    @description = @word.descriptions.new
+  end
   
   def create
     @word = Word.find(params[:word_id])
