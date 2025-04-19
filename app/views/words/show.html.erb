@@ -4,7 +4,7 @@
 <div class="p-2 py-[48px] sm:px-16 sm:py-[48px] grid gap-8 sm:gap-16 sm:grid-cols-3">
     <div>
         <turbo-frame id="<%= @word.id %>">
-            <h1 class="text-4xl mb-4"><%= @word.word %></h1>
+            <h1 class="text-4xl mb-2"><%= @word.word %></h1>
             <%= render "form", word: @word, method: :patch %>
             <%= render "delete", word: @word %>
         </turbo-frame>
@@ -12,7 +12,7 @@
     <turbo-frame id="descriptions" class="col-span-2">
         <div class="grid sm:grid-cols-2 gap-8 sm:gap-16">
             <div>
-                <h2 class="text-4xl mb-4">New description</h2>
+                <h2 class="text-4xl mb-2">Describe it</h2>
                 <%= render "descriptions/form", word: @word,  method: :post %>
             </div>
             <div>
@@ -20,7 +20,7 @@
                 <p class="mb-4">Update the descriptions if they don't fit right.</p>
                 <% if @word.descriptions.any? %>
                     <ul class="grid gap-4">
-                        <% @word.descriptions.each do |description| %>
+                        <% @word.descriptions.order('created_at DESC').each do |description| %>
                             <li>
                                 <turbo-frame id="description_<%= description.id%>">
                                     <%= render "descriptions/edit_form", word: @word, description: description%>

@@ -5,7 +5,7 @@
         <% else %>
             <%= form.label :word, "Update the word to fix any mistakes."%><br>
         <% end %>
-        <%= form.text_field :word, class: "mt-1 rounded-md w-full" %>
+        <%= form.text_field :word, class: "mt-4 rounded-md w-full" %>
         <% word.errors.full_messages_for(:word).each do |message| %>
             <div class="text-red-500"><%= message %></div>
         <% end %>

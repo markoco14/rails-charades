@@ -3,7 +3,7 @@
         <% if description.new_record? %>
             <%= form.label :description, "How do you want to describe the word?"%><br>
         <% end %>
-        <%= form.text_area :description, class: "mt-1 rounded-md w-full" %>
+        <%= form.text_area :description, class: "rounded-md w-full" %>
         <% description.errors.full_messages_for(:description).each do |message| %>
             <div class="text-red-500"><%= message %></div>
         <% end %>
