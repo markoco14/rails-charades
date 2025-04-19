@@ -8,7 +8,7 @@ class DescriptionsController < ApplicationController
     @word = Word.find(params[:word_id])
     @description = @word.descriptions.new
   end
-  
+
   def create
     @word = Word.find(params[:word_id])
     @description = @word.descriptions.create(description_params)
